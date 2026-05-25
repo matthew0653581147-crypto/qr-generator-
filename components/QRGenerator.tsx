@@ -79,7 +79,7 @@ export default function QRGenerator() {
       <div className="mt-2 pt-4 border-t border-slate-100/60 flex items-center justify-center gap-1.5 text-xs text-slate-400 font-medium">
         <span>Created by</span>
         <span className="text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full font-semibold border border-indigo-100/50 hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-150 cursor-pointer">
-          Siriraj Wongprathet
+          แมทธิวสุดหล่อ
         </span>
       </div>
 
