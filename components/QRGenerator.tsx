@@ -14,7 +14,7 @@ export default function QRGenerator() {
       width: 300,
       margin: 2,
       color: {
-        dark: "#1e293b", // ปรับตัว QR เป็นสีน้ำเงินเข้มละมุน
+        dark: "#1e293b",
         light: "#ffffff",
       },
     });
@@ -23,10 +23,9 @@ export default function QRGenerator() {
   };
 
   return (
-    /* ตัวการ์ดหลักแบบ Glassmorphism */
     <div className="w-full max-w-md bg-white/80 backdrop-blur-lg shadow-xl shadow-indigo-100/40 rounded-3xl p-8 border border-indigo-100/80 flex flex-col gap-6 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-100/60">
       
-      {/* ส่วนหัว (Header) */}
+      {/* Header Section */}
       <div className="text-center space-y-2">
         <div className="inline-flex p-3 bg-indigo-50 text-indigo-600 rounded-2xl mb-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-8 h-8">
@@ -40,7 +39,7 @@ export default function QRGenerator() {
         <p className="text-sm text-slate-500">แปลงลิงก์หรือข้อความของคุณให้เป็น QR Code ในพริบตา</p>
       </div>
 
-      {/* ส่วนอินพุตและปุ่มกด */}
+      {/* Input & Button Section */}
       <div className="flex flex-col gap-3">
         <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider pl-1">
           ข้อความหรือ URL ที่ต้องการ
@@ -62,7 +61,7 @@ export default function QRGenerator() {
         </button>
       </div>
 
-      {/* ส่วนแสดงผลลัพธ์ QR Code */}
+      {/* Result QR Code Section */}
       {qr && (
         <div className="mt-2 pt-6 border-t border-slate-100 flex flex-col items-center justify-center">
           <div className="bg-slate-50 p-4 rounded-3xl border border-slate-100 shadow-inner">
@@ -75,6 +74,15 @@ export default function QRGenerator() {
           <p className="text-xs text-slate-400 mt-4 animate-pulse">✨ พร้อมใช้งานแล้ว สแกนได้เลย!</p>
         </div>
       )}
+
+      {/* 👤 ส่วนแสดงชื่อผู้สร้าง (Creator Section) */}
+      <div className="mt-2 pt-4 border-t border-slate-100/60 flex items-center justify-center gap-1.5 text-xs text-slate-400 font-medium">
+        <span>Created by</span>
+        <span className="text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full font-semibold border border-indigo-100/50 hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-150 cursor-pointer">
+          Siriraj Wongprathet
+        </span>
+      </div>
+
     </div>
   );
 }
