@@ -14,7 +14,7 @@ export default function QRGenerator() {
       width: 300,
       margin: 2,
       color: {
-        dark: "#1e293b",
+        dark: "#0f172a", // สีตัว QR น้ำเงินเข้มเกือบดำเพื่อให้ตัดกับพื้นหลังการ์ดขาว
         light: "#ffffff",
       },
     });
@@ -23,36 +23,38 @@ export default function QRGenerator() {
   };
 
   return (
-    /* พื้นหลังธีมเรียบหรู สไตล์ดาร์กเทค ไล่เฉดสีลึกผสมลวดลายลายเส้นวงจรแบบจาง ๆ */
-    <div className="relative flex flex-col items-center justify-center min-h-screen p-6 overflow-hidden bg-[#0b0f19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-indigo-950 to-[#020617]">
+    /* 1. พื้นหลังมืดไล่เฉดสีลึก */
+    <div className="relative flex flex-col items-center justify-center min-h-screen p-6 overflow-hidden bg-[#05070f]">
       
-      {/* เอฟเฟกต์แสงเรืองรอยอยู่ด้านหลังการ์ด (Ambient Glow) */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* 2. เพิ่มเอฟเฟกต์แสงเรืองรอยขนาดใหญ่ (Ambient Glow) สีสันชัดเจนขึ้น */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-indigo-600/30 via-purple-600/20 to-cyan-500/30 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-fuchsia-600/20 rounded-full blur-[120px] pointer-events-none" />
       
-      {/* ลวดลาย Grid เส้นตารางเทคโนโลยีบาง ๆ เพิ่มมิติความหรูหรา */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+      {/* 3. เส้นตารางเทคโนโลยี เพิ่มความโมเดิร์น */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-      {/* ตัวการ์ดหลักแบบ Glassmorphism (โค้ดเดิมของคุณที่ปรับแต่งให้เข้ากับธีมมืด) */}
-      <div className="relative z-10 w-full max-w-md bg-white/90 backdrop-blur-xl shadow-2xl shadow-black/40 rounded-3xl p-8 border border-white/20 flex flex-col gap-6 transition-all duration-300 hover:shadow-cyan-500/5 hover:border-white/30">
+      {/* 4. การ์ดแก้วแบบโปร่งแสงจริง (Glassmorphism แท้) */}
+      <div className="relative z-10 w-full max-w-md bg-white/[0.07] backdrop-blur-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] rounded-3xl p-8 border border-white/[0.12] flex flex-col gap-6 transition-all duration-500 hover:border-white/[0.22] hover:shadow-purple-500/10 hover:shadow-2xl">
         
         {/* Header Section */}
         <div className="text-center space-y-2">
-          <div className="inline-flex p-3 bg-indigo-50 text-indigo-600 rounded-2xl mb-2">
+          {/* ปรับสีไอคอนให้เข้ากับธีมมืดรีเฟล็กซ์ */}
+          <div className="inline-flex p-3 bg-white/[0.06] text-purple-300 rounded-2xl mb-2 border border-white/[0.08]">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-8 h-8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
               <path strokeLinecap="round" strokeLinejoin="round" d="M16.875 15.75a1.125 1.125 0 0 1-1.125-1.125v-1.5a1.125 1.125 0 0 1 1.125-1.125h1.5a1.125 1.125 0 0 1 1.125 1.125v1.5a1.125 1.125 0 0 1-1.125 1.125h-1.5ZM13.5 18.75a1.125 1.125 0 0 1 1.125-1.125h1.5a1.125 1.125 0 0 1 1.125 1.125v1.5a1.125 1.125 0 0 1-1.125 1.125h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5ZM18.75 18.75a1.125 1.125 0 0 1 1.125-1.125h1.5a1.125 1.125 0 0 1 1.125 1.125v1.5a1.125 1.125 0 0 1-1.125 1.125h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5Z" />
             </svg>
           </div>
-          <h1 className="text-2xl font-extrabold text-slate-800 tracking-tight">
+          <h1 className="text-2xl font-extrabold text-white tracking-tight">
             QR Code Generator
           </h1>
-          <p className="text-sm text-slate-500">แปลงลิงก์หรือข้อความของคุณให้เป็น QR Code ในพริบตา</p>
+          <p className="text-sm text-slate-400">แปลงลิงก์หรือข้อความของคุณให้เป็น QR Code ในพริบตา</p>
         </div>
 
         {/* Input & Button Section */}
         <div className="flex flex-col gap-3">
-          <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider pl-1">
+          <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider pl-1">
             ข้อความหรือ URL ที่ต้องการ
           </label>
           <input
@@ -60,13 +62,13 @@ export default function QRGenerator() {
             placeholder="เช่น https://my-awesome-website.com"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="border-2 border-slate-100 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 p-3.5 rounded-2xl outline-none transition-all duration-200 text-slate-700 bg-slate-50/50 placeholder:text-slate-400 text-sm"
+            className="border border-white/[0.1] focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 p-3.5 rounded-2xl outline-none transition-all duration-200 text-white bg-white/[0.05] placeholder:text-slate-500 text-sm"
           />
 
           <button
             onClick={generateQR}
             disabled={!text}
-            className="mt-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white p-3.5 rounded-2xl font-medium shadow-lg shadow-indigo-600/20 active:scale-[0.98] transition-all duration-150 disabled:opacity-50 disabled:pointer-events-none disabled:shadow-none"
+            className="mt-2 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:opacity-90 text-white p-3.5 rounded-2xl font-medium shadow-lg shadow-purple-600/20 active:scale-[0.98] transition-all duration-150 disabled:opacity-30 disabled:pointer-events-none"
           >
             สร้าง QR Code
           </button>
@@ -74,22 +76,22 @@ export default function QRGenerator() {
 
         {/* Result QR Code Section */}
         {qr && (
-          <div className="mt-2 pt-6 border-t border-slate-100 flex flex-col items-center justify-center">
-            <div className="bg-slate-50 p-4 rounded-3xl border border-slate-100 shadow-inner">
+          <div className="mt-2 pt-6 border-t border-white/[0.08] flex flex-col items-center justify-center">
+            <div className="bg-white p-4 rounded-3xl shadow-2xl">
               <img
                 src={qr}
                 alt="QR Code"
                 className="w-56 h-56 rounded-lg"
               />
             </div>
-            <p className="text-xs text-slate-400 mt-4 animate-pulse">✨ พร้อมใช้งานแล้ว สแกนได้เลย!</p>
+            <p className="text-xs text-purple-300 mt-4 animate-pulse">✨ พร้อมใช้งานแล้ว สแกนได้เลย!</p>
           </div>
         )}
 
         {/* 👤 ส่วนแสดงชื่อผู้สร้าง */}
-        <div className="mt-2 pt-4 border-t border-slate-100/60 flex items-center justify-center gap-1.5 text-xs text-slate-400 font-medium">
+        <div className="mt-2 pt-4 border-t border-white/[0.08] flex items-center justify-center gap-1.5 text-xs text-slate-400 font-medium">
           <span>Created by</span>
-          <span className="text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full font-semibold border border-indigo-100/50 hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-150 cursor-pointer">
+          <span className="text-purple-300 bg-purple-500/10 px-2.5 py-1 rounded-full font-semibold border border-purple-500/20 hover:bg-purple-500/20 transition-colors duration-150 cursor-pointer">
             แมทธิวสุดหล่อ
           </span>
         </div>
